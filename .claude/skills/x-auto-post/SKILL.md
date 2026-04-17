@@ -172,35 +172,43 @@ drafts/
 
 ---
 
-## STEP 4: 投稿（scripts/post-tweet.js）
+## STEP 4: 投稿（GitHub Actions 自動投稿）
 
-下書きをユーザーが確認・承認したら、`scripts/post-tweet.js` で X API に直接投稿する。
+下書きを `drafts/` に出力し、git push すると GitHub Actions が 6 時間おきに未投稿分を 1 件ずつ X へ投稿する。
+
+**仕組み:**
+- `.github/workflows/post.yml` が 9:00 / 15:00 / 21:00 / 03:00 (JST) に起動
+- `scripts/post-next.js` が `drafts/` から未投稿の投稿を 1 件見つけて投稿
+- 投稿後に投稿ログを更新し、自動で commit & push
 
 **前提:**
-- 環境変数に X API キー4つが設定済み（`TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_SECRET`）
-- `npm install` 済み（`twitter-api-v2` が必要）
+- GitHub Secrets に X API キー 4 つが登録済み（`TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_SECRET`）
 
 **手順:**
-1. 下書きファイルから投稿本文を読み取る
-2. ユーザーに「投稿Nを投稿します。よろしいですか？」と確認
-3. Bash で実行:
+1. 下書きファイルを `drafts/YYYY-MM-DD.md` に出力（STEP 3）
+2. ユーザーに内容を確認してもらう
+3. 承認されたら git add → commit → push
    ```bash
-   node scripts/post-tweet.js "投稿本文をここに"
+   git add drafts/ && git commit -m "add: drafts for YYYY-MM-DD" && git push
    ```
-4. 成功したら投稿ログを更新（出力される Tweet ID を記録）
+4. あとは GitHub Actions が自動で投稿（6 時間ごと）
+5. 手動で即時投稿したい場合は Actions タブ → `X Auto Post` → `Run workflow`
+
+**手動で 1 件だけ投稿したい場合:**
+```bash
+node scripts/post-tweet.js "投稿本文をここに"
+```
+（環境変数 `TWITTER_API_KEY` 等が必要）
 
 **注意事項:**
-- 環境変数が未設定の場合は、投稿せずに下書きファイルの出力のみ行う
-- 投稿エラーが発生した場合はエラー内容をユーザーに伝え、リトライするか判断を仰ぐ
-- **Bot判定を避けるため、同時に複数投稿しない**。最低でも数時間空ける
+- **Bot判定を避けるため、同時に複数投稿しない**。GitHub Actions は 6 時間間隔なので自動的に分散される
+- 投稿エラーが発生した場合は Actions ログで確認
 
 ---
 
-## 全自動モード（Routine 向け）
-
-Routine（スケジュール実行）で使う場合、STEP 3の確認プロセスをスキップし、下書き生成後に即投稿する。ただし以下のセーフガードを設ける:
+## セーフガード
 
 - CTA付き投稿が連続しないようチェック
 - 同じネタの重複投稿を防止（過去の下書きファイルと照合）
 - 投稿後にログを `drafts/` に記録（投稿済みフラグを付与）
-- 異常があればユーザーに通知
+- 異常があれば Actions ログに記録

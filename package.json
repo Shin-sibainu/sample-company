@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "post": "node scripts/post-tweet.js",
+    "post": "node scripts/post-next.js",
+    "post:single": "node scripts/post-tweet.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
