@@ -1,0 +1,26 @@
+{
+  "skill_name": "x-auto-post",
+  "evals": [
+    {
+      "id": 1,
+      "name": "daily-basic",
+      "prompt": "今日のClaude Codeの投稿ネタを作って",
+      "expected_output": "3投稿の下書き（速報型・解説型・Tips型）がdrafts/に出力される",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "specific-topic",
+      "prompt": "Claude Codeの最新アップデートや新機能について投稿を作りたい",
+      "expected_output": "公式発表に基づいた3投稿の下書きが生成される",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "trending-collection",
+      "prompt": "今週海外で話題のClaude Codeネタを集めて、下書きを作って",
+      "expected_output": "トレンド情報を収集し、話題性の高いネタで3投稿の下書きが生成される",
+      "files": []
+    }
+  ]
+}

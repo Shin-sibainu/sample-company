@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Secrets / local
+sample.txt
+.env
+.env.*
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+
+# Separate repo (uploaded as Shin-sibainu/x-auto-post)
+x-auto-post-github/
