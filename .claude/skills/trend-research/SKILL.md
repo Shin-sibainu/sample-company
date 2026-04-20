@@ -80,7 +80,7 @@ type: trend-research
 
 ### Step 4: 保存
 
-1. `.company/secretary/notes/YYYY-MM-DD-trend-research.md` に保存する
+1. `.company/research/sources/YYYY-MM-DD-{TOPIC}-research.md` に保存する
 2. 同日にすでにファイルがある場合は追記する（`---` 区切りで追加）
 3. 保存後、レポートの要約をユーザーに表示する
 

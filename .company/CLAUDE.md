@@ -11,11 +11,21 @@
 ```
 .company/
 ├── CLAUDE.md
-└── secretary/
+├── secretary/
+│   ├── CLAUDE.md
+│   ├── inbox/
+│   ├── todos/
+│   └── notes/
+├── research/
+│   ├── CLAUDE.md
+│   ├── inbox/
+│   ├── sources/
+│   └── reports/
+└── content/
     ├── CLAUDE.md
     ├── inbox/
-    ├── todos/
-    └── notes/
+    ├── style/
+    └── drafts-archive/
 ```
 
 
@@ -25,6 +35,8 @@
 | 部署 | フォルダ | 役割 |
 |------|---------|------|
 | 秘書室 | secretary | 窓口・相談役。TODO管理、壁打ち、メモ。常設。 |
+| リサーチ部 | research | 海外トレンド・ニュース収集、ナレッジ蓄積。X投稿ネタの素材提供。 |
+| コンテンツ部 | content | リサーチ結果を元にX投稿の下書き生成。品質・トーン管理。 |
 
 
 ## 運営ルール
