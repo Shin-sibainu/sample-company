@@ -21,11 +21,16 @@
 │   ├── inbox/
 │   ├── sources/
 │   └── reports/
-└── content/
+├── content/
+│   ├── CLAUDE.md
+│   ├── inbox/
+│   ├── style/
+│   └── drafts-archive/
+└── video-production/
     ├── CLAUDE.md
-    ├── inbox/
-    ├── style/
-    └── drafts-archive/
+    ├── projects/
+    ├── templates/
+    └── logs/
 ```
 
 
@@ -37,6 +42,7 @@
 | 秘書室 | secretary | 窓口・相談役。TODO管理、壁打ち、メモ。常設。 |
 | リサーチ部 | research | 海外トレンド・ニュース収集、ナレッジ蓄積。X投稿ネタの素材提供。 |
 | コンテンツ部 | content | リサーチ結果を元にX投稿の下書き生成。品質・トーン管理。 |
+| 動画編集部 | video-production | 動画のカット編集。無音・言い直し・フィラー除去。 |
 
 
 ## 運営ルール

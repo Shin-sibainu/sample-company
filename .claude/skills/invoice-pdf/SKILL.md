@@ -87,7 +87,7 @@ INVOICE_JSON
 スクリプトは以下を行う:
 - 自社情報を `.company/invoice-config.json` から読み込み
 - インボイス制度対応の請求書PDFを生成
-- `invoices/INV-YYYYMMDD-001.pdf` に保存
+- `.company/secretary/invoices/INV-YYYYMMDD-001.pdf` に保存
 
 ### Step 4: 完了報告
 
@@ -95,7 +95,7 @@ INVOICE_JSON
 
 ```
 請求書を作成しました:
-- ファイル: invoices/INV-20260413-001.pdf
+- ファイル: .company/secretary/invoices/INV-20260413-001.pdf
 - 宛先: 株式会社〇〇
 - 合計: ¥550,000（税込）
 ```
@@ -103,5 +103,5 @@ INVOICE_JSON
 ## 注意事項
 
 - 金額は半角数字に変換する（「50万」→ 500000）
-- 請求書番号が重複しないよう `invoices/` ディレクトリ内の既存ファイルを確認する
+- 請求書番号が重複しないよう `.company/secretary/invoices/` ディレクトリ内の既存ファイルを確認する
 - 軽減税率（8%）の品目がある場合は税率ごとに内訳を表示する
